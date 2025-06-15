@@ -1,1 +1,1 @@
-web: gunicorn sonarea.wsgi
+web: gunicorn sonarea.sonarea.wsgi
