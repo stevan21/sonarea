@@ -1,0 +1,64 @@
+{% extends 'sona/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Espace d'ajout de musiques -->
+<div class="boss-container">
+    {% if message %}
+        <div class="boss-message">{{ message }}</div>
+    {% endif %}
+    <h2>Ajouter une musique</h2>
+    <form class="boss-form" method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div>
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre" required>
+        </div>
+        <div>
+            <label for="artiste">Artiste :</label>
+            <input type="text" id="artiste" name="artiste" required>
+        </div>
+        <div>
+            <label for="fichier">Fichier audio :</label>
+            <input type="file" id="fichier" name="fichier" accept="audio/*" required>
+        </div>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <!-- Tableau de bord -->
+    <div class="dashboard" style="margin-top:40px;">
+        <h3>Tableau de bord</h3>
+        <div class="row text-center">
+            <div class="col-md-4 mb-3">
+                <div class="card border-gradient">
+                    <div class="card-body">
+                        <i class="fas fa-music fa-2x mb-2 text-gradient"></i>
+                        <h5 class="card-title">Musiques ajoutées</h5>
+                        <p class="card-text" style="font-size:2rem; font-weight:bold;">12</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-gradient">
+                    <div class="card-body">
+                        <i class="fas fa-user fa-2x mb-2 text-gradient"></i>
+                        <h5 class="card-title">Artistes</h5>
+                        <p class="card-text" style="font-size:2rem; font-weight:bold;">5</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-gradient">
+                    <div class="card-body">
+                        <i class="fas fa-download fa-2x mb-2 text-gradient"></i>
+                        <h5 class="card-title">Téléchargements</h5>
+                        <p class="card-text" style="font-size:2rem; font-weight:bold;">27</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin tableau de bord -->
+</div>
+<link rel="stylesheet" href="{% static 'sona/css/boss.css' %}">
+{% endblock %}
